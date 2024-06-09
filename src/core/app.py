@@ -65,7 +65,7 @@ def create_app() -> FastAPI:
     api.add_event_handler("shutdown", shutdown_event)
     # init_middlewares(api)
     api.include_router(author_router)
-    #api.include_router(post_router)
+    api.include_router(post_router)
     #api.include_router(tag_router)
     api.include_router(category_router)
 

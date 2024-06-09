@@ -17,3 +17,6 @@ class AuthorUpdate(AuthorCreate):
 
 class Author(AuthorBase):
     author_id: int
+
+    class Config:
+        from_attributes = True

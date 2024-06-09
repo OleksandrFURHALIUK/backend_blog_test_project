@@ -15,3 +15,6 @@ class CategoryUpdate(CategoryCreate):
 
 class Category(CategoryBase):
     c_id: int
+
+    class Config:
+        from_attributes = True

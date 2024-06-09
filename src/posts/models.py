@@ -1,22 +1,26 @@
 import datetime
 
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime, Table
+from sqlalchemy.orm import relationship, backref
 
-from core.database import Base
+from core.database import Base, engine
+
 
 
 class Post(Base):
 
     __tablename__ = "posts"
 
-    id = Column(Integer, primary_key=True)
+    p_id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.datetime.now())
     title = Column(String)
     content = Column(String)
-    author = relationship('Author')
-    #category = relationship()
-    #tags = relationship()
+    #author = relationship("Author", backref='authors')
+    #Column(Integer, ForeignKey('authors.author_id'))
+    category_id = Column(Integer, ForeignKey('categories.c_id'))
+    category = relationship("Category", back_populates='posts')
 
-
-    #pos = relationship("Item", back_populates="owner")
+    author_id = Column(Integer, ForeignKey('authors.author_id'))
+    author = relationship("Author", back_populates='posts')
+    # author = relationship("Author", back_populates="authors")
+Base.metadata.create_all(bind=engine)

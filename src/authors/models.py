@@ -13,6 +13,7 @@ class Author(Base):
     age = Column(Integer)
     email = Column(String, index=True)
 
+    posts = relationship("Post", back_populates='author')
     #pos = relationship("Item", back_populates="owner")
 
 

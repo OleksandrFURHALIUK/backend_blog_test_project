@@ -11,7 +11,5 @@ class Category(Base):
     c_id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(String)
+    posts = relationship("Post", back_populates='category')
 
-
-
-#Base.metadata.create_all(bind=engine)

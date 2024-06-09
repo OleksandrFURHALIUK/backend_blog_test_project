@@ -9,7 +9,7 @@ class CategoryCreate(CategoryBase):
     pass
 
 
-class CategoryUpdate(CategoryCreate):
+class CategoryUpdate(CategoryBase):
     pass
 
 

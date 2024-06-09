@@ -66,7 +66,7 @@ def create_app() -> FastAPI:
     # init_middlewares(api)
     api.include_router(author_router)
     api.include_router(post_router)
-    #api.include_router(tag_router)
+    api.include_router(tag_router)
     api.include_router(category_router)
 
 
